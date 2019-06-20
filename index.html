@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Task</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">    </head>
+    <body class="bg-dark">
+        <div class="col col-md-4 offset-md-4 mt-4">
+            <input type="text" id="numList" class="form-control m-2" placeholder="Available numbers eg.( 1,2,3 )" required>
+            <input type="text" id="target" class="form-control m-2" placeholder="Target value" required>
+            <input type="text" id="size" class="form-control m-2" placeholder="Size of output array" required>
+            <button class="btn btn-lg btn-danger btn-block mb-4 m-2" onClick="onSubmit()">Start</button>
+            
+            <div class="" id="result">
+                <div class="dropdown-divider mb-4 ml-4 mr-2"></div>
+                <h3 class="text-danger ml-2">Result :</h3>
+                <textarea id="view" class="form-control m-2" rows="10" cols="50"></textarea>
+            </div>
+        </div>
+    </body>
+
+    <script>
+        function onSubmit() {
+
+            var numList = document.getElementById("numList").value;
+            var target = document.getElementById("target").value;
+            var size = document.getElementById("size").value;
+
+            var obj = { "numList":numList, "target":target, "size":size };
+            var data = JSON.stringify(obj);
+
+            params = {
+                headers : { "content-type" : "application/x-www-form-urlencoded; charset=UTF-8"},
+                method : "POST",
+                body : "data="+data,
+            };
+
+            fetch('API URL', params)
+            .then(response => response.json())
+            .then(json => {
+                document.getElementById("view").value = json.result
+            })
+        }
+    </script>
+</html>
