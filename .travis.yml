@@ -1,0 +1,20 @@
+language: generic
+
+sudo: false
+
+# cache the build tool's caches
+cache:
+  directories:
+  - $HOME/.m2
+  - $HOME/.gradle
+
+
+notifications:
+  email:
+    on_success: never
+    on_failure: change
+
+env:
+  global:
+    - APM_TEST_PACKAGES=""
+    - ATOM_LINT_WITH_BUNDLED_NODE="true"
