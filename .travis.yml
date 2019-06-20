@@ -1,10 +1,6 @@
-### Project specific config ###
-language: generic
 
+language: Javascript
 
-  matrix:
-    - ATOM_CHANNEL=stable
-    - ATOM_CHANNEL=beta
 
 ### Generic setup follows ###
 script:
@@ -25,4 +21,3 @@ git:
 
 sudo: false
 
-dist: trusty
