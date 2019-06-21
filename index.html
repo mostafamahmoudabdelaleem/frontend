@@ -26,8 +26,9 @@
             var numList = document.getElementById("numList").value;
             var target = document.getElementById("target").value;
             var size = document.getElementById("size").value;
+            var api_url = "localhost/get-target-avg";
 
-            var obj = { "numList":numList, "target":target, "size":size };
+            var obj = { "set":numList, "target":target, "n":size };
             var data = JSON.stringify(obj);
 
             params = {
@@ -36,7 +37,7 @@
                 body : "data="+data,
             };
 
-            fetch('API URL', params)
+            fetch(api_url, params)
             .then(response => response.json())
             .then(json => {
                 document.getElementById("view").value = json.result
